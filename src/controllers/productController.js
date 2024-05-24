@@ -13,7 +13,7 @@ exports.listProducts = async(req, res) => {
       const productObj = product.toObject();
       return {
         ...productObj,
-        urlImg: `${host}/uploads/${path.basename(product.urlImg)}`
+        urlImg: `${host}${path.basename(product.urlImg)}`
       };
     });
 

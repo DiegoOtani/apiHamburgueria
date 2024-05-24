@@ -1,5 +1,6 @@
 const Product = require('../models/ProductsModel');
 const path = require('path');
+const host = "https://apihamburgueria.onrender.com"
 
 exports.listProducts = async(req, res) => {
   try {
@@ -8,7 +9,6 @@ exports.listProducts = async(req, res) => {
       return res.status(404).send({ error: "Nenhum produto encontrado." });
     }
     // Adiciona a URL completa para cada produto
-    const host = req.protocol + '://' + req.get('host'); // http://localhost:3000
     const productsWithFullImageUrl = products.map(product => {
       const productObj = product.toObject();
       return {

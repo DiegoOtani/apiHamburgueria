@@ -29,11 +29,10 @@ exports.selectProduct = async(req, res) => {
     
     if(!product) return res.status(404).send({ error: "Produto não encontrado." });
 
-    const host = req.protocol + '://' + req.get('host');
     const productObj = product.toObject();
     const productWithFullImageUrl = {
       ...productObj,
-      urlImg: `${host}/uploads/${path.basename(product.urlImg)}`
+      urlImg: `${host}/${path.basename(product.urlImg)}`
     };
 
     res.status(200).send(productWithFullImageUrl);
